@@ -20,7 +20,7 @@
 
   .screen {
     flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 28px 20px; min-height: 100%; transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
+    padding: clamp(14px, 4vw, 28px) clamp(14px, 5vw, 20px); min-height: 100%; transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
   }
   .screen.hidden { display: none; }
   .screen.exit-left { transform: translateX(-40px); opacity: 0; }
@@ -104,7 +104,7 @@
   .back-link { color: var(--soft); background: none; border: none; font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; padding: 6px 0; letter-spacing: 0.02em; }
   .back-link:hover { color: var(--accent); }
   .icon-row { display: flex; gap: 8px; }
-  .icon-btn { width: 38px; height: 38px; border: 2px solid var(--panel); background: transparent; color: var(--soft); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.15s ease; }
+  .icon-btn { width: 44px; height: 44px; border: 2px solid var(--panel); background: transparent; color: var(--soft); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.15s ease; }
   .icon-btn:hover { border-color: var(--accent); }
   .icon-btn.active { color: var(--accent); border-color: var(--accent); }
 
@@ -112,7 +112,7 @@
   .card {
     width: 100%; min-height: 300px; background: var(--panel); border: 2px solid var(--accent);
     padding: 0; display: flex; flex-direction: column; box-shadow: 8px 8px 0 var(--mauve);
-    transform-style: preserve-3d; transition: transform 0.32s var(--ease), opacity 0.3s ease;
+    transform-style: preserve-3d; transition: transform 0.32s var(--ease), opacity 0.3s ease; position: relative;
   }
   .card.flip { transform: rotateY(90deg); }
   .card.fade { opacity: 0; }
@@ -122,8 +122,8 @@
   .card-tag.reveal { color: var(--bg); background: var(--mauve); border-color: var(--mauve); }
   .card-tag.wild { color: var(--soft); background: var(--bg); border-color: var(--soft); }
 
-  .card-body { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 32px 40px; text-align: center; }
-  .card-body p { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.25rem, 4vw, 1.55rem); font-weight: 600; line-height: 1.4; margin: 0; color: var(--ink); }
+  .card-body { flex: 1; display: flex; align-items: center; justify-content: center; padding: clamp(16px,4vw,24px) clamp(18px,6vw,32px); text-align: center; }
+  .card-body p { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.25rem, 4vw, 1.55rem); font-weight: 600; line-height: 1.4; margin: 0; color: var(--ink); overflow-wrap: break-word; word-break: break-word; }
 
   .progress-bar { width: 100%; height: 4px; background: var(--panel); margin-top: 26px; overflow: hidden; }
   .progress-fill { height: 100%; background: var(--accent); transition: width 0.3s var(--ease); }
@@ -166,4 +166,7 @@
   @media (orientation: landscape) and (max-height: 520px) {
     .screen { padding: 14px 20px; } .card { min-height: 190px; } .tagline { margin-bottom: 16px; }
     h1 { font-size: 1.6rem; } .eyebrow { margin-bottom: 4px; }
+  }
+  @media (max-width: 360px) {
+    .controls { flex-direction: column;} .btn.secondary { flex: 1}
   }
